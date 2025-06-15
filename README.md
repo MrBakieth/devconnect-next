@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📘 DevConnect – Kullanıcı Yönetim Uygulaması (Next.js + Redux Toolkit)
 
-## Getting Started
+Bu proje, TypeScript destekli olarak **Next.js 14 App Router**, **Redux Toolkit**, ve **Tailwind CSS** kullanılarak geliştirdiğim bir kullanıcı yönetim sistemidir. Kullanıcılar listelenebilir, eklenebilir, güncellenebilir ve silinebilir. Mobil uyumlu hamburger menüsü ile modern bir kullanıcı arayüzü sunar.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Kullanılan Teknolojiler
+
+- **Next.js 14 (App Router)**
+- **TypeScript**
+- **Redux Toolkit & Thunks**
+- **Tailwind CSS**
+- **Lucide React** (ikon için)
+- **React Hooks** (useState, useEffect, useDispatch, useSelector)
+
+---
+
+## 📂 Klasör Yapısı
+
+```
+src/
+│
+├── app/
+│   ├── users/              # UsersPage (kullanıcı listeleme, ekleme, düzenleme)
+│   ├── store/              # Redux store & thunk işlemleri
+│   ├── type/               # Tip tanımları (User tipi)
+│   └── components/         # Ortak bileşenler (Navbar gibi)
+│
+├── public/                 # Gerekli görseller vs.
+└── styles/                # Tailwind ile styling
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Özellikler
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ✅ Kullanıcı Listeleme
 
-## Learn More
+- Uygulama açıldığında API'den kullanıcı verileri çekilir ve listelenir.
 
-To learn more about Next.js, take a look at the following resources:
+### ➕ Kullanıcı Ekleme
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `Add User` butonuyla açılan form üzerinden yeni kullanıcı eklenebilir.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ✏️ Kullanıcı Güncelleme
 
-## Deploy on Vercel
+- Listelenen kullanıcıların yanına “Edit” butonu eklenerek form üzerinden bilgileri güncellenebilir.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🗑️ Kullanıcı Silme (isteğe bağlı olarak eklenebilir)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Silme işlemi planlanabilir veya eklenebilir.
+
+### 📱 Mobil Uyumlu Hamburger Menü
+
+- Küçük ekranlarda hamburger ikonuyla menü açılır, büyük ekranlarda yatay menü gösterilir.
+
+---
+
+## 🧠 Redux Toolkit Mantığı
+
+- Tüm async işlemler (`fetchUsers`, `addUser`, `updateUser`) thunk fonksiyonları ile yönetiliyor.
+- Her thunk için `pending`, `fulfilled`, `rejected` durumları `.addMatcher()` ile global olarak handle ediliyor.
+- Kullanıcılar `createSlice` içindeki reducer’larla güncelleniyor.
+
+---
+
+## 🧪 Geliştirme Sücrecinde Yapılanlar
+
+## 1. Proje Planlama ve Tasarlama
+
+- Proje gereksinimlerinin belirlenmesi
+- Kullanıcı odaklı arayüz geliştirilmesi
+- Responsive tasarım odaklı prensiplerin belirlenmesi (mobil uyumlu hambuger menü gibi)
+
+## 2. Teknoloji Seçimi
+
+- Nexj.js ve React ile projeyi oluşturulması
+- Redux Toolkit ile global state yönetimlerinin sağlanması
+- TypeScript ile tip güvenliğinin sağlanması
+- Tailwind CSS ile hızlı ve tutarlı, kullanıcı odaklı stillerin oluşturulması
+
+## 3. CRUD İşlemlerinin Geliştirilmesi
+
+- Kullanıcı listeleme, ekleme, güncelleme ve silme işlemlerinin backedn API ile yani McokAPI ile entegre edilmesi
+- Asenkron işlemler için `createAsyncThunk` kullanımı
+- Tekrarlayan durumları yönetip, optimize ve sade kod yazımına uygun olması için `.addMatcher` kullanımı
+
+## 4. Form Yönetimi ve Kullanıcı Etkileşimi
+
+- Form durumlarının yönetimi için React state kullanımı
+- Form doğrulama ve hata yönetimi
+- Modal form tasarımı ile kullanıcı odaklı deneyimlerin iyileştirilmesi
+
+## 5. Navigasyon ve UI iyileştirmeleri
+
+- Navbar oluşturulması ve React Router ile sayfa geçişlerinin sağlanması
+- Hamburger menü tasarımı ile mobil uyumluluk kazandırılması
+- Tailwind CSS ile görsel iyileştirmelerle beraber animasyonlar eklenmesi
+
+## 6. Hata Ayıklama ve Performans Optimizasyonu
+
+- API çağrılarında hata ayıklama ve kulanıcı bilgilendirmesi
+- State güncellemelerinin doğru ve efektif yapılması
+- Gereksiz renderların önlenmesi için React ve Redux best-practices uygulanması
+
+## 7. Kod Kalitesi ve Tip Güvenliği
+
+- TypeScript ile yazım hatalarının erken yakalanması
+- Fonksiyonel ve okunabilir kod yazımı
+- Anlaşılabilir olması için yorum satırlarıyla desteklenmesi
+- Ortak fonksiyonların ve state yönetiminin modüler hale getirilmesi
+
+---
+
+## 👨‍💻 Geliştirici
+
+**H. Furkan Yaman**\
+Front-End Developer\
+🇹🇷 Türkiye\
+💼 [LinkedIn](www.linkedin.com/in/hüseyin-furkan-yaman-3775a22b7)
