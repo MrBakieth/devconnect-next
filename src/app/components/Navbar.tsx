@@ -21,6 +21,14 @@ const Navbar = () => {
             Users
           </Link>
         </div>
+        <div className="hidden md:flex space-x-6 mr-12">
+          <Link
+            href="/about_project"
+            className="text-gray-700 hover:text-indigo-600 transition text-xl font-medium"
+          >
+            About Project
+          </Link>
+        </div>
         <div className="md:hidden">
           <button onClick={toggleMenu}>
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -37,6 +45,12 @@ const Navbar = () => {
               className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2 md:py-0"
             >
               Users
+            </Link>
+            <Link
+              href="/about_project"
+              className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2 md:py-0"
+            >
+              About Project
             </Link>
           </div>
         )}

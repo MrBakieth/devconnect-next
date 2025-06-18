@@ -1,13 +1,41 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk} from "@reduxjs/toolkit";
 import { User } from "../type/user";
 
-export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-    const res = await fetch("https://684d25f865ed087139153942.mockapi.io/users");
-    if (!res.ok) {
-        throw new Error("Data could not be retrieved.");
+export const fetchUsers = createAsyncThunk("users/fetchUsers",
+    async({page, limit } : { page: number, limit: number}, {rejectWithValue}) => {
+        try {
+            const res = await fetch(`https://684d25f865ed087139153942.mockapi.io/users?page=${page}&limit=${limit}`);
+        
+            if(!res.ok) {
+                throw new Error("Failed to fetch users.");
+            }
+            const data = res.json();
+            return data;
+        } catch (error) {
+            if(error instanceof Error) {
+                return rejectWithValue(error.message)
+            }
+            return rejectWithValue("Unknown error occured.")
+        }
     }
-    return await res.json();
-});
+)
+
+export const deleteUser = createAsyncThunk("users/deleteUser", async (id:string, {rejectWithValue}) => {
+    try {
+    const res = await fetch (`https://684d25f865ed087139153942.mockapi.io/users/${id}`, {
+        method: "DELETE"
+    });
+    if(!res.ok) {
+        throw new Error("Failed to delete user.");
+    }
+    return id; //
+    } catch (error) {
+        if (error instanceof Error) {
+            return rejectWithValue(error.message)
+        }
+        return rejectWithValue("Unknown error occured.")
+    }
+})
 
 export const addUser = createAsyncThunk(
     "users/addUser",

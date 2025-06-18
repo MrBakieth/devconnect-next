@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { User } from '../type/user'
-import { fetchUsers, addUser, updateUser} from './userThunk';
+import { fetchUsers, addUser, updateUser, deleteUser} from './userThunk';
 
 export interface UserState {
     users: User[],
@@ -21,7 +21,8 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-        .addCase(fetchUsers.fulfilled, (state) => {
+        .addCase(fetchUsers.fulfilled, (state, action) => {
+            state.users = action.payload;
             state.status = "succeeded";
         })
         .addCase(addUser.fulfilled, (state, action) => {
@@ -33,7 +34,10 @@ const userSlice = createSlice({
             if (index !== -1 ) {
                 state.users[index] = updatedUser;
             }
-        } )
+        })
+        .addCase(deleteUser.fulfilled, (state, action) => {
+            state.users = state.users.filter((user) => user.id !== action.payload);
+        })
         .addMatcher(
            (action): action is { type: string } =>
             action.type.endsWith("/pending"),

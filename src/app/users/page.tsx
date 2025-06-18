@@ -2,28 +2,48 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers, addUser, updateUser } from "@/app/store/userThunk";
+import {
+  fetchUsers,
+  addUser,
+  updateUser,
+  deleteUser,
+} from "@/app/store/userThunk";
 import type { AppDispatch, RootState } from "../store/store";
 import { User } from "../type/user";
+import UserList from "@/app/components/UserList";
+import UserForm from "../components/UserForm";
+import EditUser from "../components/EditUser";
+import Pagination from "../components/Pagination";
+import Loading from "../components/Loading";
+import Failed from "../components/Failed";
 
 export default function UsersPage() {
+  // Hooks for using React Redux Toolkit
   const dispatch = useDispatch<AppDispatch>();
   const { users, status, error } = useSelector(
     (state: RootState) => state.users
   );
 
+  // States of User List
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [job, setJob] = useState("");
   const [showForm, setShowForm] = useState(false);
 
+  // States of edit user informations
   const [editUser, setEditUser] = useState<User | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", job: "" });
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+  // State of pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 5;
 
+  // We're fetching our users from API which is MockAPI
+  useEffect(() => {
+    dispatch(fetchUsers({ page: currentPage, limit }));
+  }, [dispatch, currentPage]);
+
+  // Function that submitting our form data
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !job) return;
@@ -35,16 +55,27 @@ export default function UsersPage() {
     setShowForm(false);
   };
 
+  // Function that for edit button
   const handleEditClick = (user: User) => {
     setEditUser(user);
     setFormData({ name: user.name, email: user.email, job: user.job });
   };
 
+  // Function that for editing our user update button
   const handleUpdateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editUser) return;
     await dispatch(updateUser({ ...editUser, ...formData }));
     setEditUser(null);
+  };
+  // Function that user delete button
+  const handleDeleteUser = (user: User) => {
+    dispatch(deleteUser(user.id));
+  };
+
+  // function that handling page number
+  const hanldePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
   };
 
   return (
@@ -59,134 +90,45 @@ export default function UsersPage() {
         </button>
 
         {showForm && (
-          <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative">
-              <h1 className="text-xl flex justify-center items-center font-medium">
-                Add An User
-              </h1>
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4 mb-6 p-4 rounded"
-              >
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full p-2 border rounded"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full p-2 border rounded"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Job"
-                  className="w-full p-2 border rounded"
-                  value={job}
-                  onChange={(e) => setJob(e.target.value)}
-                  required
-                />
-                <div className="space-x-4">
-                  <button
-                    type="submit"
-                    className="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 transition"
-                  >
-                    Submit
-                  </button>
-                  <button
-                    onClick={() => setShowForm(!showForm)}
-                    className="bg-red-600 text-white px-2 py-2 rounded hover:bg-red-700 transition"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+          <UserForm
+            name={name}
+            email={email}
+            job={job}
+            onSubmit={handleSubmit}
+            onCancel={() => setShowForm(false)}
+            onChange={(field, value) => {
+              if (field == "name") setName(value);
+              else if (field === "email") setEmail(value);
+              else if (field === "job") setJob(value);
+            }}
+          />
         )}
         {editUser && (
-          <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative">
-              <h1 className="text-xl flex justify-center items-center font-medium">
-                Edit User
-              </h1>
-              <form
-                onSubmit={handleUpdateSubmit}
-                className="space-y-4 mb-6 p-4 rounded"
-              >
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full p-2 border rounded"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full p-2 border rounded"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                />
-                <input
-                  type="text"
-                  placeholder="Job"
-                  className="w-full p-2 border rounded"
-                  value={formData.job}
-                  onChange={(e) =>
-                    setFormData({ ...formData, job: e.target.value })
-                  }
-                />
-                <div className="space-x-4">
-                  <button
-                    type="submit"
-                    className="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 transition"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => setEditUser(null)}
-                    className="bg-red-600 text-white px-2 py-2 rounded hover:bg-red-700 transition"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+          <EditUser
+            title="Edit User"
+            name={formData.name}
+            email={formData.email}
+            job={formData.job}
+            onSubmit={handleUpdateSubmit}
+            onCancel={() => setEditUser(null)}
+            onChange={(field, value) =>
+              setFormData((prev) => ({ ...prev, [field]: value }))
+            }
+          />
         )}
-        {status === "loading" && <p>Loading Users...</p>}
-        {status === "failed" && <p className="text-red-500">Error: {error}</p>}
+        {status === "loading" && <Loading message="Loading..." />}
+        {status === "failed" && <Failed error={`Error: ${error}`} />}
       </div>
-      <ul className="flex justify-center items-center">
-        {users.map((user) => (
-          <li
-            key={user.id}
-            className="border-b border-gray-300 shadow-lg p-3 rounded bg-white w-6xl"
-          >
-            <p className="font-semibold text-xl">{user.name}</p>
-            <p className="text-lg text-gray-600">
-              {user.email} - {user.job}
-            </p>
-            <button
-              className="mt-2 text-indigo-600 underline text-lg"
-              onClick={() => handleEditClick(user)}
-            >
-              Edit
-            </button>
-          </li>
-        ))}
-      </ul>
+      <UserList
+        users={users}
+        onEdit={handleEditClick}
+        onDelete={handleDeleteUser}
+      />
+      <Pagination
+        currentPage={currentPage}
+        onPageChange={hanldePageChange}
+        disablePrev={currentPage === 1}
+      />
     </div>
   );
 }

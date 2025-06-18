@@ -1,4 +1,5 @@
 interface Props {
+  title: string;
   name: string;
   email: string;
   job: string;
@@ -7,7 +8,8 @@ interface Props {
   onChange: (field: string, value: string) => void;
 }
 
-export default function UserForm({
+export default function EditUser({
+  title,
   name,
   email,
   job,
@@ -19,7 +21,7 @@ export default function UserForm({
     <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative">
         <h1 className="text-xl flex justify-center items-center font-medium">
-          Add An User
+          {title}
         </h1>
         <form onSubmit={onSubmit} className="space-y-4 mb-6 p-4 rounded">
           <div>
@@ -27,7 +29,7 @@ export default function UserForm({
               htmlFor="name"
               className="block text-md font-medium text-gray-700 mb-2 ml-1"
             >
-              Name:
+              {name}
             </label>
             <input
               id="name"
@@ -36,7 +38,6 @@ export default function UserForm({
               className="w-full p-2 border rounded"
               value={name}
               onChange={(e) => onChange("name", e.target.value)}
-              required
             />
           </div>
           <div>
@@ -44,7 +45,7 @@ export default function UserForm({
               htmlFor="email"
               className="block text-md font-medium text-gray-700 mb-2 ml-1"
             >
-              E-mail:
+              {email}
             </label>
             <input
               id="email"
@@ -53,7 +54,6 @@ export default function UserForm({
               className="w-full p-2 border rounded"
               value={email}
               onChange={(e) => onChange("email", e.target.value)}
-              required
             />
           </div>
           <div>
@@ -61,7 +61,7 @@ export default function UserForm({
               htmlFor="job"
               className="block text-md font-medium text-gray-700 mb-2 ml-1"
             >
-              Job:
+              {job}
             </label>
             <input
               id="job"
@@ -70,15 +70,15 @@ export default function UserForm({
               className="w-full p-2 border rounded"
               value={job}
               onChange={(e) => onChange("job", e.target.value)}
-              required
             />
           </div>
+
           <div className="space-x-4">
             <button
               type="submit"
               className="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 transition"
             >
-              Submit
+              Update
             </button>
             <button
               onClick={onCancel}

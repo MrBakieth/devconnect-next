@@ -1,120 +1,127 @@
-# 📘 DevConnect – Kullanıcı Yönetim Uygulaması (Next.js + Redux Toolkit)
+# 📘 DevConnect – User Management Application (Next.js + Redux Toolkit)
 
-Bu proje, TypeScript destekli olarak **Next.js 14 App Router**, **Redux Toolkit**, ve **Tailwind CSS** kullanılarak geliştirdiğim bir kullanıcı yönetim sistemidir. Kullanıcılar listelenebilir, eklenebilir, güncellenebilir ve silinebilir. Mobil uyumlu hamburger menüsü ile modern bir kullanıcı arayüzü sunar.
+This project is a user management system built with **Next.js 14 App Router**, **Redux Toolkit**, and **Tailwind CSS**, fully written in **TypeScript**. It allows users to be listed, added, updated, and optionally deleted. It features a modern, responsive interface with a mobile-friendly hamburger menu.
 
 ---
 
-## 🚀 Kullanılan Teknolojiler
+## 🚀 Technologies Used
 
 - **Next.js 14 (App Router)**
 - **TypeScript**
 - **Redux Toolkit & Thunks**
 - **Tailwind CSS**
-- **Lucide React** (ikon için)
-- **React Hooks** (useState, useEffect, useDispatch, useSelector)
+- **Lucide React** (for icons)
+- **React Hooks** (`useState`, `useEffect`, `useDispatch`, `useSelector`)
 
 ---
 
-## 📂 Klasör Yapısı
+## 📂 Folder Structure
 
 ```
 src/
 │
 ├── app/
-│   ├── users/              # UsersPage (kullanıcı listeleme, ekleme, düzenleme)
-│   ├── store/              # Redux store & thunk işlemleri
-│   ├── type/               # Tip tanımları (User tipi)
-│   └── components/         # Ortak bileşenler (Navbar gibi)
+│   ├── users/              # UsersPage (list, add, edit users)
+│   ├── store/              # Redux store & thunks
+│   ├── type/               # Type definitions (e.g., User)
+│   └── components/         # Shared components (e.g., Navbar)
 │
-├── public/                 # Gerekli görseller vs.
-└── styles/                # Tailwind ile styling
+├── public/                 # Assets such as images
+└── styles/                # Styling with Tailwind
 ```
 
 ---
 
-## ✨ Özellikler
+## ✨ Features
 
-### ✅ Kullanıcı Listeleme
+### ✅ User Listing
 
-- Uygulama açıldığında API'den kullanıcı verileri çekilir ve listelenir.
+- User data is fetched from the API and listed when the app loads.
 
-### ➕ Kullanıcı Ekleme
+### ➕ Add User
 
-- `Add User` butonuyla açılan form üzerinden yeni kullanıcı eklenebilir.
+- A form modal opens via the "Add User" button to create new users.
 
-### ✏️ Kullanıcı Güncelleme
+### ✏️ Edit User
 
-- Listelenen kullanıcıların yanına “Edit” butonu eklenerek form üzerinden bilgileri güncellenebilir.
+- Each user has an "Edit" button to update their information via the same form.
 
-### 🗑️ Kullanıcı Silme (isteğe bağlı olarak eklenebilir)
+### 🗑️ Delete User (Optional)
 
-- Silme işlemi planlanabilir veya eklenebilir.
+- A delete feature can be planned or added if needed.
 
-### 📱 Mobil Uyumlu Hamburger Menü
+### 📱 Mobile-Friendly Hamburger Menu
 
-- Küçük ekranlarda hamburger ikonuyla menü açılır, büyük ekranlarda yatay menü gösterilir.
-
----
-
-## 🧠 Redux Toolkit Mantığı
-
-- Tüm async işlemler (`fetchUsers`, `addUser`, `updateUser`) thunk fonksiyonları ile yönetiliyor.
-- Her thunk için `pending`, `fulfilled`, `rejected` durumları `.addMatcher()` ile global olarak handle ediliyor.
-- Kullanıcılar `createSlice` içindeki reducer’larla güncelleniyor.
+- A hamburger menu appears on small screens, while a horizontal menu is shown on larger ones.
 
 ---
 
-## 🧪 Geliştirme Sücrecinde Yapılanlar
+## 🔢 Pagination
 
-## 1. Proje Planlama ve Tasarlama
-
-- Proje gereksinimlerinin belirlenmesi
-- Kullanıcı odaklı arayüz geliştirilmesi
-- Responsive tasarım odaklı prensiplerin belirlenmesi (mobil uyumlu hambuger menü gibi)
-
-## 2. Teknoloji Seçimi
-
-- Nexj.js ve React ile projeyi oluşturulması
-- Redux Toolkit ile global state yönetimlerinin sağlanması
-- TypeScript ile tip güvenliğinin sağlanması
-- Tailwind CSS ile hızlı ve tutarlı, kullanıcı odaklı stillerin oluşturulması
-
-## 3. CRUD İşlemlerinin Geliştirilmesi
-
-- Kullanıcı listeleme, ekleme, güncelleme ve silme işlemlerinin backedn API ile yani McokAPI ile entegre edilmesi
-- Asenkron işlemler için `createAsyncThunk` kullanımı
-- Tekrarlayan durumları yönetip, optimize ve sade kod yazımına uygun olması için `.addMatcher` kullanımı
-
-## 4. Form Yönetimi ve Kullanıcı Etkileşimi
-
-- Form durumlarının yönetimi için React state kullanımı
-- Form doğrulama ve hata yönetimi
-- Modal form tasarımı ile kullanıcı odaklı deneyimlerin iyileştirilmesi
-
-## 5. Navigasyon ve UI iyileştirmeleri
-
-- Navbar oluşturulması ve React Router ile sayfa geçişlerinin sağlanması
-- Hamburger menü tasarımı ile mobil uyumluluk kazandırılması
-- Tailwind CSS ile görsel iyileştirmelerle beraber animasyonlar eklenmesi
-
-## 6. Hata Ayıklama ve Performans Optimizasyonu
-
-- API çağrılarında hata ayıklama ve kulanıcı bilgilendirmesi
-- State güncellemelerinin doğru ve efektif yapılması
-- Gereksiz renderların önlenmesi için React ve Redux best-practices uygulanması
-
-## 7. Kod Kalitesi ve Tip Güvenliği
-
-- TypeScript ile yazım hatalarının erken yakalanması
-- Fonksiyonel ve okunabilir kod yazımı
-- Anlaşılabilir olması için yorum satırlarıyla desteklenmesi
-- Ortak fonksiyonların ve state yönetiminin modüler hale getirilmesi
+- Users are listed in groups of five.
+- Navigation between pages is possible via "Prev" and "Next" buttons.
 
 ---
 
-## 👨‍💻 Geliştirici
+## 🧠 Redux Toolkit Logic
 
-**H. Furkan Yaman**\
-Front-End Developer\
-🇹🇷 Türkiye\
-💼 [LinkedIn](www.linkedin.com/in/hüseyin-furkan-yaman-3775a22b7)
+- All async actions (`fetchUsers`, `addUser`, `updateUser`) are handled via thunk functions.
+- Each thunk has `pending`, `fulfilled`, and `rejected` states managed globally with `.addMatcher()`.
+- User state is managed through `createSlice` reducers.
+
+---
+
+## 🧪 Development Process
+
+### 1. Project Planning & Design
+
+- Requirements gathering and feature planning
+- User-focused UI design
+- Implementing responsive design principles (e.g., mobile menu)
+
+### 2. Technology Stack Selection
+
+- Project setup with Next.js and React
+- Global state management with Redux Toolkit
+- Type safety with TypeScript
+- Consistent, fast UI design using Tailwind CSS
+
+### 3. CRUD Development
+
+- Integrating user operations (list, add, update, delete) with a backend using MockAPI
+- Using `createAsyncThunk` for async calls
+- Implementing `.addMatcher()` to handle repetitive thunk logic cleanly
+
+### 4. Form Management & User Interaction
+
+- Managing form states with React
+- Validation and error handling
+- Modal-based form UI for better user experience
+
+### 5. Navigation & UI Improvements
+
+- Creating a responsive navbar using Next.js routing
+- Mobile support via hamburger menu
+- Tailwind-based visual enhancements and animations
+
+### 6. Debugging & Performance Optimization
+
+- Debugging API calls and displaying user-friendly messages
+- Ensuring effective state updates
+- Avoiding unnecessary re-renders using best practices
+
+### 7. Code Quality & Type Safety
+
+- Catching bugs early with TypeScript
+- Writing clean, functional, and readable code
+- Adding helpful comments
+- Modularizing shared logic and Redux state
+
+---
+
+## 👨‍💻 Developer
+
+**H. Furkan Yaman**
+Front-End Developer
+🇹🇷 Turkey
+💼 [LinkedIn](https://www.linkedin.com/in/h%C3%BCseyin-furkan-yaman-3775a22b7)
