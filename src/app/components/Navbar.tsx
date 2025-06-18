@@ -35,20 +35,16 @@ const Navbar = () => {
           </button>
         </div>
         {isOpen && (
-          <div
-            className={`${
-              isOpen ? "block" : "hidden"
-            } md:flex md:items-center md:space-x-6 absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent p-4 md:p-0 shadow-md md:shadow-none transition-all`}
-          >
+          <div className="absolute top-16 left-0 w-full bg-white p-4 shadow-md md:hidden z-50">
             <Link
               href="/users"
-              className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2 md:py-0"
+              className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2"
             >
               Users
             </Link>
             <Link
               href="/about_project"
-              className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2 md:py-0"
+              className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2"
             >
               About Project
             </Link>

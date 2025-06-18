@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="relative bg-gray-200 h-screen flex justify-center items-center overflow-hidden">
-      {/* SVG Blob image for background */}
-      <div className="absolute -top-20 -left-20 w-[500px] h-[500px] z-0 opacity-50 blur-2xl">
+    <main className="relative bg-gray-200 min-h-screen flex justify-center items-center overflow-hidden px-4">
+      {/* Top-left SVG Blob */}
+      <div className="absolute -top-32 -left-32 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] z-0 opacity-40 blur-2xl">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <path
             fill="#6366F1"
@@ -13,7 +13,9 @@ export default function Home() {
           />
         </svg>
       </div>
-      <div className="absolute -bottom-55 -right-55 w-[600px] h-[600px] z-0 opacity-50 blur-2xl">
+
+      {/* Bottom-right SVG Blob */}
+      <div className="absolute -bottom-32 -right-32 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] z-0 opacity-40 blur-2xl">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <path
             fill="#2466F8"
@@ -23,15 +25,15 @@ export default function Home() {
         </svg>
       </div>
 
-      {/* Main section */}
-      <section className="relative z-10 flex flex-col items-center space-y-6 border-2 border-gray-400 rounded-xl bg-gray-100 shadow-xl p-12">
-        <h1 className="text-5xl font-bold">Welcome!</h1>
-        <p className="text-2xl text-center">
+      {/* Main Content */}
+      <section className="relative z-10 flex flex-col items-center gap-5 border border-gray-400 rounded-xl bg-white/70 shadow-xl p-4 sm:p-12 w-full max-w-xl">
+        <h1 className="text-4xl sm:text-5xl font-bold text-center">Welcome!</h1>
+        <p className="text-lg sm:text-2xl text-center text-gray-800">
           <strong>Manage</strong>, <strong>edit</strong>, and{" "}
           <strong>view</strong> users effortlessly with a modern tech stack.
         </p>
         <Link href="/users">
-          <button className="px-4 py-2 mt-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-xl animate-bounce">
+          <button className="px-5 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-lg sm:text-xl animate-bounce">
             To See Users
           </button>
         </Link>
