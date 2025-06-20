@@ -28,7 +28,7 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <section className="relative z-10 flex flex-col items-center gap-5 border border-gray-400 rounded-xl bg-white/70 shadow-xl p-4 sm:p-12 w-full max-w-xl">
+      <section className="relative z-10 flex flex-col items-center gap-5 border border-gray-400 rounded-xl bg-white/70 shadow-xl p-4 sm:p-12 w-full max-w-xl sm:mb-24">
         <h1 className="text-4xl sm:text-5xl font-bold text-center">Welcome!</h1>
         <p className="text-lg sm:text-2xl text-center text-gray-800">
           <strong>Manage</strong>, <strong>edit</strong>, and{" "}
