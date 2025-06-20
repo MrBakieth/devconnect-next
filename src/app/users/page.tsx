@@ -68,7 +68,7 @@ export default function UsersPage() {
   };
 
   return (
-    <div className="p-4 sm:p-6 max-w-4xl mx-auto w-full">
+    <div className="p-4 sm:p-6 max-w-4xl mx-auto w-full min-h-screen ">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4">
         <h2 className="text-2xl sm:text-3xl font-bold text-center sm:text-left">
           User List
@@ -125,16 +125,15 @@ export default function UsersPage() {
             onEdit={handleEditClick}
             onDelete={handleDeleteUser}
           />
-
-          <div className="mt-6">
-            <Pagination
-              currentPage={currentPage}
-              onPageChange={hanldePageChange}
-              disablePrev={currentPage === 1}
-            />
-          </div>
         </>
       )}
+      <div className="mt-6">
+        <Pagination
+          currentPage={currentPage}
+          onPageChange={hanldePageChange}
+          disablePrev={currentPage === 1}
+        />
+      </div>
     </div>
   );
 }

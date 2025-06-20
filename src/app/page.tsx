@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="relative bg-gray-200 h-screen flex justify-center items-center overflow-y-hidden px-4">
+    <main className="relative bg-gray-200 h-screen flex justify-center items-center px-4">
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         {/* Top-left SVG Blob */}
         <div className="absolute -top-32 -left-32 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] opacity-40 blur-2xl">
@@ -28,7 +28,7 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <section className="relative z-10 flex flex-col items-center gap-5 border border-gray-400 rounded-xl bg-white/70 shadow-xl p-4 sm:p-12 w-full max-w-xl sm:mb-24">
+      <section className="relative z-10 flex flex-col items-center gap-5 border border-gray-400 rounded-xl bg-white/70 shadow-xl p-4 sm:p-12 md:p-16 w-full max-w-xl md:max-w-2xl mb-42 md:mb-2">
         <h1 className="text-4xl sm:text-5xl font-bold text-center">Welcome!</h1>
         <p className="text-lg sm:text-2xl text-center text-gray-800">
           <strong>Manage</strong>, <strong>edit</strong>, and{" "}

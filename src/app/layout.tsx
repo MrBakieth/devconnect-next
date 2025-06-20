@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -9,9 +10,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Navbar />
-        <Providers>{children}</Providers>
+        <main className="flex-grow">
+          <Providers>{children}</Providers>
+        </main>
+        <Footer />
       </body>
     </html>
   );
