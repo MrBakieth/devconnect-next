@@ -22,8 +22,8 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(fetchUsers.fulfilled, (state, action) => {
-            state.users = action.payload;
             state.status = "succeeded";
+            state.users = action.payload;
         })
         .addCase(addUser.fulfilled, (state, action) => {
             state.users.push(action.payload);
@@ -36,7 +36,7 @@ const userSlice = createSlice({
             }
         })
         .addCase(deleteUser.fulfilled, (state, action) => {
-            state.users = state.users.filter((user) => user.id !== action.payload);
+            state.users = state.users.filter((user) => user.id !== action.payload );
         })
         .addMatcher(
            (action): action is { type: string } =>

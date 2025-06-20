@@ -21,11 +21,14 @@ export default function UserForm({
         <h1 className="text-xl flex justify-center items-center font-medium">
           Add An User
         </h1>
-        <form onSubmit={onSubmit} className="space-y-4 mb-6 p-4 rounded">
+        <form
+          onSubmit={onSubmit}
+          className="space-y-4 mb-6 p-4 rounded flex flex-col gap-2"
+        >
           <div>
             <label
               htmlFor="name"
-              className="block text-md font-medium text-gray-700 mb-2 ml-1"
+              className="block text-md font-medium text-gray-700 mb-2 ml-1 sm:ml-0"
             >
               Name:
             </label>
@@ -35,14 +38,16 @@ export default function UserForm({
               placeholder="Name"
               className="w-full p-2 border rounded"
               value={name}
-              onChange={(e) => onChange("name", e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange("name", e.target.value)
+              }
               required
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-md font-medium text-gray-700 mb-2 ml-1"
+              className="block text-md font-medium text-gray-700 mb-2 ml-1 sm:ml-0"
             >
               E-mail:
             </label>
@@ -52,14 +57,16 @@ export default function UserForm({
               placeholder="Email"
               className="w-full p-2 border rounded"
               value={email}
-              onChange={(e) => onChange("email", e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange("email", e.target.value)
+              }
               required
             />
           </div>
           <div>
             <label
               htmlFor="job"
-              className="block text-md font-medium text-gray-700 mb-2 ml-1"
+              className="block text-md font-medium text-gray-700 mb-2 ml-1 sm:ml-0"
             >
               Job:
             </label>
@@ -69,20 +76,22 @@ export default function UserForm({
               placeholder="Job"
               className="w-full p-2 border rounded"
               value={job}
-              onChange={(e) => onChange("job", e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange("job", e.target.value)
+              }
               required
             />
           </div>
-          <div className="space-x-4">
+          <div className="space-x-4 flex flex-col sm:flex-row gap-2">
             <button
               type="submit"
-              className="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 transition"
+              className="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 transition w-full sm:w-auto"
             >
               Submit
             </button>
             <button
               onClick={onCancel}
-              className="bg-red-600 text-white px-2 py-2 rounded hover:bg-red-700 transition"
+              className="bg-red-600 text-white px-2 py-2 rounded hover:bg-red-700 transition w-full sm:w-auto"
             >
               Cancel
             </button>

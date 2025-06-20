@@ -1,10 +1,17 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   return (
@@ -34,8 +41,12 @@ const Navbar = () => {
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
+
         {isOpen && (
-          <div className="absolute top-16 left-0 w-full bg-white p-4 shadow-md md:hidden z-50">
+          <div
+            className="absolute top-16 left-0 w-full bg-white p-4 shadow-md md:hidden z-50
+    transition-all duration-300 ease-in-out opacity-100 translate-y-0 animate-slide-in"
+          >
             <Link
               href="/users"
               className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2"

@@ -9,7 +9,7 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers",
             if(!res.ok) {
                 throw new Error("Failed to fetch users.");
             }
-            const data = res.json();
+            const data = await res.json();
             return data;
         } catch (error) {
             if(error instanceof Error) {
@@ -28,7 +28,7 @@ export const deleteUser = createAsyncThunk("users/deleteUser", async (id:string,
     if(!res.ok) {
         throw new Error("Failed to delete user.");
     }
-    return id; //
+    return id; 
     } catch (error) {
         if (error instanceof Error) {
             return rejectWithValue(error.message)

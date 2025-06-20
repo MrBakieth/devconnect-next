@@ -29,7 +29,7 @@ export default function EditUser({
               htmlFor="name"
               className="block text-md font-medium text-gray-700 mb-2 ml-1"
             >
-              {name}
+              Name:
             </label>
             <input
               id="name"
@@ -37,7 +37,9 @@ export default function EditUser({
               placeholder="Name"
               className="w-full p-2 border rounded"
               value={name}
-              onChange={(e) => onChange("name", e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange("name", e.target.value)
+              }
             />
           </div>
           <div>
@@ -45,7 +47,7 @@ export default function EditUser({
               htmlFor="email"
               className="block text-md font-medium text-gray-700 mb-2 ml-1"
             >
-              {email}
+              Email:
             </label>
             <input
               id="email"
@@ -53,7 +55,9 @@ export default function EditUser({
               placeholder="Email"
               className="w-full p-2 border rounded"
               value={email}
-              onChange={(e) => onChange("email", e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange("email", e.target.value)
+              }
             />
           </div>
           <div>
@@ -61,7 +65,7 @@ export default function EditUser({
               htmlFor="job"
               className="block text-md font-medium text-gray-700 mb-2 ml-1"
             >
-              {job}
+              Job:
             </label>
             <input
               id="job"
@@ -69,20 +73,22 @@ export default function EditUser({
               placeholder="Job"
               className="w-full p-2 border rounded"
               value={job}
-              onChange={(e) => onChange("job", e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                onChange("job", e.target.value)
+              }
             />
           </div>
 
           <div className="space-x-4">
             <button
               type="submit"
-              className="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 transition"
+              className="bg-green-600 text-white px-2 py-2 rounded hover:bg-green-700 transition cursor-pointer"
             >
               Update
             </button>
             <button
               onClick={onCancel}
-              className="bg-red-600 text-white px-2 py-2 rounded hover:bg-red-700 transition"
+              className="bg-red-600 text-white px-2 py-2 rounded hover:bg-red-700 transition cursor-pointer"
             >
               Cancel
             </button>

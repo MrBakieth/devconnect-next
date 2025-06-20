@@ -13,7 +13,7 @@ import UserList from "@/app/components/UserList";
 import UserForm from "../components/UserForm";
 import EditUser from "../components/EditUser";
 import Pagination from "../components/Pagination";
-import Loading from "../components/Loading";
+import Loading from "../loading";
 import Failed from "../components/Failed";
 
 export default function UsersPage() {
@@ -114,22 +114,27 @@ export default function UsersPage() {
         </div>
       )}
 
-      {status === "loading" && <Loading message="Loading..." />}
       {status === "failed" && <Failed error={`Error: ${error}`} />}
 
-      <UserList
-        users={users}
-        onEdit={handleEditClick}
-        onDelete={handleDeleteUser}
-      />
+      {status === "loading" ? (
+        <Loading message="Loading..." />
+      ) : (
+        <>
+          <UserList
+            users={users}
+            onEdit={handleEditClick}
+            onDelete={handleDeleteUser}
+          />
 
-      <div className="mt-6">
-        <Pagination
-          currentPage={currentPage}
-          onPageChange={hanldePageChange}
-          disablePrev={currentPage === 1}
-        />
-      </div>
+          <div className="mt-6">
+            <Pagination
+              currentPage={currentPage}
+              onPageChange={hanldePageChange}
+              disablePrev={currentPage === 1}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

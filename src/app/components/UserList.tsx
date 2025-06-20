@@ -8,13 +8,13 @@ interface Props {
 
 export default function UserList({ users, onEdit, onDelete }: Props) {
   return (
-    <ul className="flex flex-col gap-4">
+    <ul className="flex flex-col gap-4 w-full">
       {users.map((user) => (
         <li
           key={user.id}
-          className="flex flex-col sm:flex-row justify-between sm:items-center border border-gray-300 shadow-md rounded-lg bg-white p-4"
+          className="flex flex-col sm:flex-row justify-between sm:items-center border border-gray-300 shadow-md rounded-lg bg-white p-4 gap-2"
         >
-          <div className="flex flex-col gap-1 text-base sm:text-lg">
+          <div className="flex flex-col gap-1 text-base sm:text-lg w-full justify-start">
             <p>
               <strong>Name:</strong> {user.name}
             </p>
@@ -25,15 +25,15 @@ export default function UserList({ users, onEdit, onDelete }: Props) {
               <strong>Job:</strong> {user.job}
             </p>
           </div>
-          <div className="flex mt-4 sm:mt-0 sm:ml-6 gap-4">
+          <div className="flex mt-4 sm:mt-0 sm:ml-6 gap-4 justify-end">
             <button
-              className="text-indigo-600 hover:underline text-base sm:text-lg"
+              className="text-indigo-600 hover:underline text-base sm:text-lg cursor-pointer"
               onClick={() => onEdit(user)}
             >
               Edit
             </button>
             <button
-              className="text-red-600 hover:underline text-base sm:text-lg"
+              className="text-red-600 hover:underline text-base sm:text-lg cursor-pointer"
               onClick={() => onDelete(user)}
             >
               Delete
