@@ -127,13 +127,15 @@ export default function UsersPage() {
           />
         </>
       )}
-      <div className="mt-6">
-        <Pagination
-          currentPage={currentPage}
-          onPageChange={hanldePageChange}
-          disablePrev={currentPage === 1}
-        />
-      </div>
+      {users.length === 0 && status !== "loading" ? null : (
+        <div className="mt-6">
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={hanldePageChange}
+            disablePrev={currentPage === 1}
+          />
+        </div>
+      )}
     </div>
   );
 }

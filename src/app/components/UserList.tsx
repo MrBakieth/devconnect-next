@@ -7,6 +7,14 @@ interface Props {
 }
 
 export default function UserList({ users, onEdit, onDelete }: Props) {
+  if (users.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full h-full p-4 bg-gray-100 rounded-lg shadow-md">
+        <p className="text-lg">No user found.</p>
+        <p className="text-lg">Please add a user. </p>
+      </div>
+    );
+  }
   return (
     <ul className="flex flex-col gap-4 w-full">
       {users.map((user) => (
