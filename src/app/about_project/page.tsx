@@ -11,7 +11,7 @@ const page = () => {
 
       <p className="text-base sm:text-lg text-gray-700 mb-8 text-center">
         DevConnect is a full-featured user management platform where users can
-        create, edit, and explore profiles. Built with modern technologies, it
+        create, edit, and delete users. Built with modern technologies, it
         focuses on performance, scalability, and an intuitive user experience.
       </p>
 

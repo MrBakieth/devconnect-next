@@ -18,6 +18,7 @@
     "react-redux": "^9.2.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.27.1",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.6.3",
