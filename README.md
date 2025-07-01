@@ -1,6 +1,6 @@
 # 📘 DevConnect – User Management Application (Next.js + Redux Toolkit)
 
-This project is a user management system built with **Next.js 14 App Router**, **Redux Toolkit**, and **Tailwind CSS**, fully written in **TypeScript**. It allows users to be listed, added, updated, and optionally deleted. It features a modern, responsive interface with a mobile-friendly hamburger menu.
+This project is a user management and project management system built with **Next.js 14 App Router**, **Redux Toolkit**, and **Tailwind CSS**, fully written in **TypeScript**. It allows users and projects to be listed, added, updated, and optionally deleted. It features a modern, responsive interface with a mobile-friendly hamburger menu.
 
 ---
 
@@ -21,32 +21,33 @@ This project is a user management system built with **Next.js 14 App Router**, *
 src/
 │
 ├── app/
+│   ├── __tests__/          # Testing files which is written by Jest
+│   ├── about_project/      # Giving informations about the project
 │   ├── users/              # UsersPage (list, add, edit users)
 │   ├── store/              # Redux store & thunks
 │   ├── type/               # Type definitions (e.g., User)
 │   └── components/         # Shared components (e.g., Navbar)
 │
-├── public/                 # Assets such as images
-└── styles/                # Styling with Tailwind
+└── public/                 # Assets such as images
 ```
 
 ---
 
 ## ✨ Features
 
-### ✅ User Listing
+### ✅ User Listing & Project Listing
 
-- User data is fetched from the API and listed when the app loads.
+- User data and project data are fetched from the API and listed when the app loads.
 
-### ➕ Add User
+### ➕ Add User & Add Project
 
-- A form modal opens via the "Add User" button to create new users.
+- A form modal opens via the "Add User" or "Add Project" button to create new users or projects.
 
-### ✏️ Edit User
+### ✏️ Edit User & Edit Project
 
-- Each user has an "Edit" button to update their information via the same form.
+- Each user and project has an "Edit" button to update their information via the same form.
 
-### 🗑️ Delete User (Optional)
+### 🗑️ Delete User & Delete Project (Optional)
 
 - A delete feature can be planned or added if needed.
 
@@ -58,7 +59,7 @@ src/
 
 ## 🔢 Pagination
 
-- Users are listed in groups of five.
+- Users & projects are listed in groups of five.
 - Navigation between pages is possible via "Prev" and "Next" buttons.
 
 ---
@@ -67,7 +68,7 @@ src/
 
 - All async actions (`fetchUsers`, `addUser`, `updateUser`) are handled via thunk functions.
 - Each thunk has `pending`, `fulfilled`, and `rejected` states managed globally with `.addMatcher()`.
-- User state is managed through `createSlice` reducers.
+- User state & project state are managed through `createSlice` reducers.
 
 ---
 

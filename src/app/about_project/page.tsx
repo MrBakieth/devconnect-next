@@ -11,8 +11,9 @@ const page = () => {
 
       <p className="text-base sm:text-lg text-gray-700 mb-8 text-center">
         DevConnect is a full-featured user management platform where users can
-        create, edit, and delete users. Built with modern technologies, it
-        focuses on performance, scalability, and an intuitive user experience.
+        create, edit, and delete users and projects. Built with modern
+        technologies, it focuses on performance, scalability, and an intuitive
+        user experience.
       </p>
 
       <section className="mb-10">
@@ -42,8 +43,8 @@ const page = () => {
           ✅ Features
         </h2>
         <ul className="list-disc list-inside text-gray-700 text-base sm:text-xl space-y-2">
-          <li>User profile creation and editing</li>
-          <li>User listing with pagination</li>
+          <li>User and project profile creation and editing</li>
+          <li>User and project listing with pagination</li>
           <li>Responsive and accessible UI</li>
           <li>Mock API integration for backend simulation</li>
         </ul>
