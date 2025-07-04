@@ -19,7 +19,7 @@ const mockOnEdit = jest.fn(); // jest.fn() creates a mock function
 const mockOnDelete = jest.fn();
 
 describe("UserList Component", () => {
-  it("renders user list with correct data", () => {
+  it("renders user list with correct datas", () => {
     render(
       <UserList users={mockUsers} onEdit={mockOnEdit} onDelete={mockOnDelete} />
     );

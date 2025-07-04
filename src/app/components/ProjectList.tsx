@@ -10,8 +10,8 @@ export default function ProjectList({ projects, onEdit, onDelete }: Props) {
   if (projects.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center w-full h-full p-4 bg-gray-100 rounded-lg shadow-md">
-        <p className="text-lg">No user found.</p>
-        <p className="text-lg">Please add a user. </p>
+        <p className="text-lg">No project found.</p>
+        <p className="text-lg">Please add a project. </p>
       </div>
     );
   }

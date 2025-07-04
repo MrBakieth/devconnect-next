@@ -118,6 +118,26 @@ src/
 - Adding helpful comments
 - Modularizing shared logic and Redux state
 
+## 8. Testing with Jest
+
+This project includes unit and component tests written using **Jest** and **@testing-library/react**.
+
+### ✅ What is Tested?
+
+- Form components such as `UserForm`, `EditUser`, `EditProject`,`ProjectList`,`ProjectForm`.
+- Button clicks (e.g., "Submit", "Cancel", "Edit")
+- Input field changes and event handling
+- Dispatching Redux actions via thunks (`addUser`, `updateUser`, etc.)
+- Rendering behavior of components based on props
+
+### 🧩 Example Libraries Used
+
+- `@testing-library/react` – For rendering components and simulating user interactions
+- `@testing-library/jest-dom` – For better DOM assertions (e.g., `toBeInTheDocument()`)
+- `jest.fn()` – To mock callback functions like `onSubmit`, `onCancel`, etc.
+
+---
+
 ---
 
 ## 👨‍💻 Developer
