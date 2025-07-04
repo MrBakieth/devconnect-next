@@ -54,7 +54,7 @@ export default function ProjectForm({
             <input
               id="description"
               type="text"
-              placeholder="description"
+              placeholder="Description"
               className="w-full p-2 border rounded"
               value={description}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -77,7 +77,7 @@ export default function ProjectForm({
               className="w-full p-2 border rounded"
               value={date}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                onChange("job", e.target.value)
+                onChange("date", e.target.value)
               }
               required
             />
