@@ -122,9 +122,9 @@ src/
 
 This project includes unit and component tests written using **Jest** and **@testing-library/react**.
 
-### ✅ What is Tested?
+## ✅ What is Tested?
 
-- Form components such as `UserForm`, `EditUser`, `EditProject`,`ProjectList`,`ProjectForm`.
+- Form components such as `UserForm`, `EditUser`, `EditProject`,`ProjectList`,`ProjectForm`
 - Button clicks (e.g., "Submit", "Cancel", "Edit")
 - Input field changes and event handling
 - Dispatching Redux actions via thunks (`addUser`, `updateUser`, etc.)
@@ -135,8 +135,6 @@ This project includes unit and component tests written using **Jest** and **@tes
 - `@testing-library/react` – For rendering components and simulating user interactions
 - `@testing-library/jest-dom` – For better DOM assertions (e.g., `toBeInTheDocument()`)
 - `jest.fn()` – To mock callback functions like `onSubmit`, `onCancel`, etc.
-
----
 
 ---
 
