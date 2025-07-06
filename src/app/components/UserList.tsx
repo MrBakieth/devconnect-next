@@ -17,10 +17,11 @@ export default function UserList({ users, onEdit, onDelete }: Props) {
   }
   return (
     <ul className="flex flex-col gap-4 w-full">
-      {users.map((user) => (
+      {users.map((user, index) => (
         <li
           key={user.id}
-          className="flex flex-col sm:flex-row justify-between sm:items-center border border-gray-300 shadow-md rounded-lg bg-white p-4 gap-2"
+          className="animate-fadeInUp flex flex-col sm:flex-row justify-between sm:items-center border border-gray-300 shadow-md rounded-lg bg-white p-4 gap-2"
+          style={{ animationDelay: `${index * 100}ms` }}
         >
           <div className="flex flex-col gap-1 text-base sm:text-lg w-full justify-start">
             <p>

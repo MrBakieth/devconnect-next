@@ -18,10 +18,11 @@ export default function ProjectList({ projects, onEdit, onDelete }: Props) {
 
   return (
     <ul className="flex flex-col gap-4 w-full">
-      {projects.map((project) => (
+      {projects.map((project, index) => (
         <li
           key={project.id}
-          className="flex flex-col sm:flex-row justify-between sm:items-center border border-gray-300 shadow-md rounded-lg bg-white p-4 gap-2"
+          className="animate-fadeInUp flex flex-col sm:flex-row justify-between sm:items-center border border-gray-300 shadow-md rounded-lg bg-white p-4 gap-2 "
+          style={{ animationDelay: `${index * 200}ms` }}
         >
           <div className="flex flex-col gap-1 text-base sm:text-lg w-full justify-start">
             <p>

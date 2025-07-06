@@ -118,7 +118,7 @@ src/
 - Adding helpful comments
 - Modularizing shared logic and Redux state
 
-## 8. Testing with Jest
+### 8. Testing with Jest
 
 This project includes unit and component tests written using **Jest** and **@testing-library/react**.
 

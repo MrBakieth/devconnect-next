@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="relative bg-gray-200 h-screen flex justify-center items-center px-4">
+    <main className="relative bg-gray-200 h-screen flex justify-center items-center px-4 animate-slide-in">
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
         {/* Top-left SVG Blob */}
         <div className="absolute -top-32 -left-32 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] opacity-40 blur-2xl">
