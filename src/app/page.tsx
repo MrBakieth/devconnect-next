@@ -32,7 +32,8 @@ export default function Home() {
         <h1 className="text-4xl sm:text-5xl font-bold text-center">Welcome!</h1>
         <p className="text-lg sm:text-2xl text-center text-gray-800">
           <strong>Manage</strong>, <strong>edit</strong>, and{" "}
-          <strong>view</strong> users effortlessly with a modern tech stack.
+          <strong>view</strong> users & projects effortlessly with a modern tech
+          stack.
         </p>
         <Link href="/users">
           <button className="px-5 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-lg sm:text-xl cursor-pointer">
