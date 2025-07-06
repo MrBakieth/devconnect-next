@@ -35,11 +35,18 @@ export default function Home() {
           <strong>view</strong> users & projects effortlessly with a modern tech
           stack.
         </p>
-        <Link href="/users">
-          <button className="px-5 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-lg sm:text-xl cursor-pointer">
-            To See Users
-          </button>
-        </Link>
+        <div className="flex gap-6">
+          <Link href="/users">
+            <button className="px-5 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-lg sm:text-xl cursor-pointer">
+              To See Users
+            </button>
+          </Link>
+          <Link href="/projects">
+            <button className="px-5 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition text-lg sm:text-xl cursor-pointer">
+              To See Projects
+            </button>
+          </Link>
+        </div>
       </section>
     </main>
   );
