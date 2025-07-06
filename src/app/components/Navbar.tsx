@@ -62,6 +62,12 @@ const Navbar = () => {
               Users
             </Link>
             <Link
+              href="/projects"
+              className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2"
+            >
+              Projects
+            </Link>
+            <Link
               href="/about_project"
               className="block text-gray-700 hover:text-indigo-600 transition text-lg font-medium py-2"
             >
